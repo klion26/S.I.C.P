@@ -1,0 +1,4 @@
+#(next_guess - guess)/guess < fit number
+(define (good-enough? guess x)
+ (< (/ (abs (- guess (improve guess x))) guess) 0.001))
+
