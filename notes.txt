@@ -33,3 +33,8 @@
 			Euclid's Algorithm
 			Lame's Theorem
 		1.2.6 Example: Testing for Primality
+	1.3 Formulating Abstractions with Higher-Order Procedures
+		Procedures that manipulate procedures are called **higer-order procedures**.
+		1.3.1 Procedures as Arguments : Abstraction
+			{sum, product} => accumulate => filtered-accumulate
+		1.3.2 Constructing Procedures Using Lambda

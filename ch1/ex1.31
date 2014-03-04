@@ -1,0 +1,21 @@
+a.
+(define (product term a next b)
+  (define (iter a result)
+    (if (> a b)
+      result
+      (iter (next a) (* result (term a)))))
+  (iter a 1))
+(define (identity x)
+  x)
+(define (factorial n)
+  (product identity 1 inc n))
+(define (get-pi n)
+  (define (add2 x)
+    (+ x 2))
+  (* 4.0 (/ (* 2 n (product square 4 add2 (- n 2)))
+          (product square 3 add2 (- n 1)))))
+b.
+(define (product term a next b)
+  (if (> a b)
+      1
+      (* (term a) (product term (next a) b))))

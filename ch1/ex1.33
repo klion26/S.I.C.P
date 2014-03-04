@@ -1,0 +1,15 @@
+a.
+(define (filtered-accumulate combiner null-value term a next b filter)
+  (cond
+     ((> a b)     null-value)
+     ((filter a)  (combiner (term a) (filtered-accumulate combiner null-value term (next a) next b filter)))
+     (else   (filtered-accumulate combiner null-value term (next a) next b filter))))
+(filtered-accumulate plus 0 identity 1 inc 20 prime?)
+b.
+(define (less-pro n)
+  (define (m a b);; multiply a and b
+    (* a b))  
+  (define (rp a)  ;;gcd(a,n) == 1???
+    (= 1 (gcd a n)))
+  (filtered-accumulate m 1 identity 1 inc n rp))
+(less-pro 7) ==> 720

@@ -1,0 +1,22 @@
+a.
+(define (accumulate combiner null-value term a next b)
+  (if (> a b)
+      null-value
+      (combiner (term a) (accumulate combiner null-value term (next a) next b))))
+(define (plus a b)
+  (+ a b))
+(define (new-sum a b)
+  (accumulate plus 0 identity a inc b))
+;(new-sum 5 8)
+(define (m a b)
+  (* a b))
+(define (new-product a b)
+  (accumulate m 1 identity a inc b)) 
+
+b.
+(define (accumulate combiner null-value term a next b)
+  (define (ite a result)
+    (if (> a b)
+        result
+        (ite (next a) (combiner result (term a)))))
+  (ite a null-values))
