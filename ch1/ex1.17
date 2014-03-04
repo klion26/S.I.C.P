@@ -1,0 +1,7 @@
+(define (mulity a b c)
+  (cond
+    ((= b 0) c)
+    ((even? b) (mulity (double a) (halve b) c))
+    (else (mulity (double a) (halve (- b 1)) (+ c a)))))
+(define (mul a b)
+  (mulity a b 0)) 

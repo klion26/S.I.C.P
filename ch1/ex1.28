@@ -1,0 +1,10 @@
+(define (expmod base exp m)
+  (cond ((= exp 0) 1)
+        ((even? exp) (check-nontrivial-sqrt (expmod base (/ exp 2) m) m))
+        (else (remainder (* base (expmod base (- exp 1) m)) m))))
+(define (check-nontrivial-sqrt n m)
+  (define (check-inside x)
+    (cond
+      ((and (not (= n 1)) (not (= n (- m 1))) (= x 1)) 0)
+      (else x)))
+  (check-inside (remainder (square n) m))) 

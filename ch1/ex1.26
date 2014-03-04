@@ -1,0 +1,1 @@
+every (expmod base (/ exp 2) m) willbe calculated twice, so, this is O(n) not O(logn)

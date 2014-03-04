@@ -1,0 +1,5 @@
+(define (carmichael n count)
+  (cond
+    ((= n count) (display "OK"))
+    ((= (expmod count n n) count) (carmichael n (+ count 1)))
+    (else (display count) (display "sorry")))) 

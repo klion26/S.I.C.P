@@ -1,0 +1,6 @@
+a = (1+sqrt(5))/2    b=(1-sqrt(5))/2
+left: fib(0) = 0    right: (a^0 - b^0)/sqrt(5) = 0   left==right
+left: fib(1) = 1    right: (a^n-b^n)/sqrt(5) = 2*sqrt(5)/2/sqrt(5)=1
+left = right
+
+fib(n) = fib(n-1)+fib(n-2) = (a^(n-1)-b^(n-1))/sqrt(5) + (a^(n-2) - b^(n-2))/sqrt(5) = ((3+sqrt(5))/2*(a^(n-2)) - (3-sqrt(5))/2*(b^(n-2)))/sqrt(5) ==> (a^n - b^b)/sqrt(5)
