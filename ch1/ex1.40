@@ -1,0 +1,6 @@
+;;if g(x) is a differentiable function, then we could calculate the fixed point of 
+;;f(x) = x-g(x)/dg(x) to get the zero point of g(x)
+;;This is newtion's method
+(define (cubic a b c) ;;return a function calculate x^3 + ax^2 + bx + c
+  (lambda (x)
+    (+ (cube x) (* a (square x)) (* b x) c))) 

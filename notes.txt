@@ -42,3 +42,6 @@
 			using let to create local variables(let is a syntactic sugar of lambda)
 				(let ((<var1> <exp1>) (<var2> <exp2>) ... (<varn> <expn>)) <body>), The variables' values are computed outside the let.
 				(let ((x 3) (y (+ x 2))) (* x y)), if x==2, then, y=4(= 2+2)
+		1.3.3 Procedures as General Methods: zeros and fixed points of functions
+			k-term finite continued fraction => golden ratio, natural logarithms, tan(x)
+		1.3.4 Procedures as Returned Values

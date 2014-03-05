@@ -1,0 +1,4 @@
+(define (compose f g) ;;compose f and g
+  (lambda (x)
+    (f (g x))))  ;; put (g x) as the paramenter of procedure f
+((compose square inc) 6)

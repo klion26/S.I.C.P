@@ -1,0 +1,22 @@
+a.
+procedure:
+(define (cont-frac N D k)
+  (define (work l result)
+    (if (= l 0)
+        result
+        (work (- l 1) (/ (N l) (+ result (D l))))))
+  (work k 0))
+k=10:
+0.6179775280898876
+k=12:
+0.6180257510729613
+k=14:
+0.6180327868852459
+
+b.
+(define (cont-frac N D k)
+  (define (work l)
+    (if (= l k)
+	1
+	(/ (N l) (+ (D l) (work (+ l 1))))))
+  (work 1))

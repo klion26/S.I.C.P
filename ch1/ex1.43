@@ -1,0 +1,10 @@
+solution:
+
+(define (repeated f k)
+  (cond
+      ((= k 1) 
+          (lambda (x) (f x)))
+      (else (lambda (x) ((compose f (repeated f (- k 1))) x)))))
+
+((repeated square 3) 5)  => 5^8 => 390625
+((repeated square 2) 5)  => 5^4 => 625

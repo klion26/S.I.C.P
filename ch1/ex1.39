@@ -1,0 +1,23 @@
+solution 1:
+(define (tan-cf x k)
+  (define (N i)
+    (if (= i 1)
+        x
+         (* x x)))
+  (define (D i)
+    (- (* i 2) 1.0))
+  (define (work l ret)
+    (if (= l 0)
+        ret
+        (work (- l 1) (/ (N l) (- (D l) ret)))))
+  (work k 0))
+
+solution 2:
+(define (tan-cf x k)
+  (define (N i)
+    (if (= i 1)
+        x
+        (- (* x x))))	;;be careful!!!!
+  (define (D i)
+    (- (* i 2) 1.0))
+  (cont-frac N D k)) 

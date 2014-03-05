@@ -1,0 +1,4 @@
+ans: 21
+
+(double double) => 2*2 = 4 times
+(double (double double))  => 4 * 4 = 16 times
