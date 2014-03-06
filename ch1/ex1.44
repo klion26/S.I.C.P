@@ -1,0 +1,12 @@
+(define (smooth f)
+  (lambda (x)
+    (/ (+ (f x) (f (+ x dx)) (f (- x dx))))))
+(define (n-fold-smooth f n)
+  (repeated (smooth f) n)) 
+  
+(define dx 0.7)!!!!!!!!  different dx different answer
+
+((smooth sin) (/ pi 2)) => 0.8432281248563256
+((smooth sin) pi)   => 7.401486830834377e-17
+((n-fold-smooth sin 3) (/ pi 2))  => 0.49659100370209336
+((n-fold-smooth sin 3) (/ pi 2))  => 0.4017400886852076

@@ -1,0 +1,6 @@
+(define (iterative-improve good-enough? f)
+  (define (update guess)
+    (if (good-enough? guess)
+        guess
+        (update (f guess))))
+  update) 

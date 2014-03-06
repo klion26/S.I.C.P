@@ -1,0 +1,14 @@
+1.
+solution:
+(define (nth-root x n)  ;;;get the nth-root of x
+  (fixed-point
+     ((repeated average-damp 7)  ;;;repeat 7 times average-damp, we could modify this
+        (lambda (y) (/ x (expt y (- n 1)))))
+     1.0))
+
+sqrt, 3th-root, .... 7th-root only need a single average-damp
+from 8th-root to 15th-root we need two average-damps
+from 16th-root to 31th-root we need 3 average-damps
+32th-root to 63th-root we need 4 average-damps
+
+we need max(floor(log(n)/log(2)) - 1, 0) average-damps
