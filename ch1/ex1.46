@@ -1,6 +1,6 @@
 (define (iterative-improve good-enough? f)
-  (define (update guess)
-    (if (good-enough? guess)
-        guess
-        (update (f guess))))
-  update) 
+  (define (update guess)  ;;define the procedure we will return
+    (if (good-enough? guess) ;; good-enough?
+        guess 
+        (update (f guess))))  ;;update next-value(get from the procedure f)
+  update) ;;return the update procedure
