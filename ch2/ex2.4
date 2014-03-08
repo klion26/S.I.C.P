@@ -1,0 +1,19 @@
+(define (cons x y)
+  (lambda (m) (m x y)))
+
+(define (car z)
+  (z (lambda (p q) p)))
+(define (cdr z)
+  (z (lambda (p q) q))) 
+;;(cons x y) return a procedure, takes a procedure m as parameter, m takes two parameters x and y
+
+;;for example
+(define oo (cons 3 2))
+(car oo)
+=>(z (lambda (p q) p))
+=>(oo (lambda (p q) p))
+=>((cons 3 2) (lambda (p q) p))
+=>((lambda (m) (m 3 2)) (lambda (p q) p)) ;; (lambda (p q) p) is a parameter of the first procedure
+=>((lambda (p q) p) 3 2)
+=>3
+(cdr oo)  ;; the same as above
