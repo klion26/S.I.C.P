@@ -1,0 +1,2 @@
+par2 doesn't introduce the tolerance error of r1+r2!!! But par1 does.
+see details in http://wiki.drewhess.com/wiki/SICP_exercise_2.15

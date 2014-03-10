@@ -1,0 +1,2 @@
+tolerance is too small!!! 
+interval a multiply interval b, then a*b's tolerance is pretty close to [a's tolerance + b's tolerance]

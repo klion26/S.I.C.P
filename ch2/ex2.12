@@ -1,0 +1,4 @@
+(define (make-center-percent c t)
+  (make-center-width c (abs (/ (* c t) 100))))  ;;abs for negative c
+(define (percent i)
+  (* 100 (/ (width i) (abs (center i))))) ;;abs for negative center

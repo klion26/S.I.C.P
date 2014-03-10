@@ -1,0 +1,13 @@
+(define (par1 r1 r2)
+   (div-interval (mul-interval r1 r2)
+                 (add-interval r1 r2)))
+(define (par2 r1 r2)
+   (let ((one (make-interval 1 1)))
+        (div-interval one (add-interval (div-interval one r1)
+                                        (div-interval one r2)))))
+
+(div-interval A A) will not be the identity! it will be a interval, but, if B equals to A, then, A/B is a interval too.
+(define r1 (make-center-width 40 0.001))
+(define r2 (make-center-width 50 0.001))
+(center (par1 r1 r2))      ========>0.01111111111659808
+(center (par2 r1 r2))      ========>22.22222222208505
