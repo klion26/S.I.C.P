@@ -1,0 +1,9 @@
+First, i don't know how to do nothing in scheme, and, i didn't find it in google. So, i use
+(newline) for do nothing.
+Second, *if-structure* only has three parts, when you use if in this problem, let may will help you
+(define (for-each proc items)
+  (cond
+       ((null? items)  (newline))
+       ;(let ()
+       (else  (proc (car items)) (for-each proc (cdr items)))))
+(for-each (lambda (x) (newline) (display x)) (list 57 321 88))

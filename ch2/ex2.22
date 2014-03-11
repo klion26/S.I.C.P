@@ -1,0 +1,6 @@
+because this sentense:
+(cons (square (car things) answer))
+he insert each answer in the head of list
+
+The second procedure is wrong:
+the second parameter must be a list not a number!!!

@@ -1,0 +1,8 @@
+Same-parity:
+(define nil '())
+(define (same-parity a . l)
+  (define (ite ans l a)
+    (cond ((null? l) ans)
+          ((= (remainder a 2) (remainder (car l) 2))   (ite (append ans (cons (car l) nil)) (cdr l) a))
+          (else (ite ans (cdr l) a)))) 
+  (ite (list a) l a))

@@ -54,3 +54,7 @@
 		2.1.3 What Is Meant by Data?
 			Any triple of procedures that satisfies "if z is (cons x y) then (car z) is x and (cdr z) is y" can be used as the basis for implementing pairs.
 	2.2 Hierarchical Data and the Closure Property
+		2.2.1 Representing Sequences
+			List: (cons a1 (cons a2 (cons a3 (cons ... (cons an nil))))).
+			(list-ref listname n) return the nth(0-based) element
+		2.2.2 Hierarchical Structures

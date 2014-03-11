@@ -1,0 +1,4 @@
+(define (reverse l)
+  (cond
+    ((null? l) l)
+    (else (append (reverse (cdr l)) (cons (car l) '())))))

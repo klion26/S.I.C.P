@@ -1,0 +1,9 @@
+(define (no-more? l)  ;;l is empty or not
+  (if (null? l) #t
+      #f))
+(define (except-first-denomination l) ;;return (cdr l)
+  (cdr l))
+(define (first-denomination l) ;; return (car l)
+  (car l))
+  
+The order of the list coin-values does not affect the answer, all solution will be tested, and, all amounts are positive

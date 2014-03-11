@@ -1,0 +1,5 @@
+(define (last-pair l)
+  (cond
+    ((null? l) l)
+    ((null? (cdr l)) (car l))
+    (else (last-pair (cdr l)))))
