@@ -1,0 +1,6 @@
+(define (deep-reverse l)
+  (cond
+    ((null? l) l)
+    ((not (pair? l))  l)
+    (else (append (deep-reverse (cdr l)) (cons (deep-reverse (car l)) nil)))))
+(define x (list 5 (list 1 2) (list 3 4) 7))

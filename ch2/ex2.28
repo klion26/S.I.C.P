@@ -1,0 +1,11 @@
+Solution-I:
+(define (fringe l)
+  (cond
+    ((null? l) l)
+    ((not (pair? l)) l)
+    (else 
+     (let ((fcar (fringe (car l))))
+       (if (not (pair? fcar))
+           (append (cons fcar nil) (fringe (cdr l)))
+           (append fcar (fringe (cdr l))))))))
+Solution-II:

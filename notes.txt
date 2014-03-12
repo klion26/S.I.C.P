@@ -58,3 +58,4 @@
 			List: (cons a1 (cons a2 (cons a3 (cons ... (cons an nil))))).
 			(list-ref listname n) return the nth(0-based) element
 		2.2.2 Hierarchical Structures
+			(pair? x) : return true if x is a pair(list), otherwise, false.
