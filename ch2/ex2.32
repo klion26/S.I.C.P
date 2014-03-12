@@ -1,0 +1,9 @@
+(define (subsets s)
+  (if (null? s)
+      (list nil)
+      (let ((rest (subsets (cdr s))))
+        (append rest (map (lambda (x) (cons (car s) x)) rest)))))
+
+explanation:
+first, we get subsets of (cdr s) and let it be rest, then, we add current number to all sets
+in rest, in this way, we get all subsets of curretn set.!!!
