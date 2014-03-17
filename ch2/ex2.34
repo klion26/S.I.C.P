@@ -1,0 +1,7 @@
+Horner-eval:
+a[n]*x^n + a[n-1]*x^(n-1) + ... + a[1]*x + a[0]
+= (...(a[n]*x + a[n-1])*x + ... + a[1])*x + a[0]
+(define (horner-eval x coefficient-sequence)
+  (accumulate (lambda (this-coeff higher-terms) (+ this-coeff (* higher-terms x)))
+              0
+              coefficient-sequence))

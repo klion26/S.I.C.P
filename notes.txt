@@ -59,3 +59,10 @@
 			(list-ref listname n) return the nth(0-based) element
 		2.2.2 Hierarchical Structures
 			(pair? x) : return true if x is a pair(list), otherwise, false.
+		2.2.3 Sequences as Conventional Interfaces
+			(sum-odd-squares tree)(sum of all odd numbers' square in a tree)
+			(even-fibs n) (a list of even fibonacci numbers)
+			a. enumerates
+			b. filter
+			c. map
+			d. accumulate

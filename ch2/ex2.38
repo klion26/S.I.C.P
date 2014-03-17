@@ -1,0 +1,2 @@
+property:
+(op A B) == (op B A)  for any A and B

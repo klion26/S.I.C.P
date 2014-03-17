@@ -1,0 +1,4 @@
+(define (reverse sequence)
+  (accumulate (lambda (x y) (append y (list x))) nil sequence))
+(define (reverse-2 sequence)
+  (fold-left (lambda (x y) (cons y x)) nil sequence)) 
