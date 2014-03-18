@@ -1,0 +1,2 @@
+each row, this procedure will calculate rest-of-queens, this takes a lot of time,
+the before procedure calculates rest-of-queens only once, and test each possiblity for new-row
