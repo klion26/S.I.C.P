@@ -1,0 +1,7 @@
+(define (equal? a b)
+  (cond
+    ((and (null? a) (null? b)) #t) ;;;reach the end
+    ((or (null? a) (null? b)) #f)  ;;;don't have the same length
+    (else
+     (let ((ret (eq? (car a) (car b))))
+       (and ret (equal? (cdr a) (cdr b)))))))
