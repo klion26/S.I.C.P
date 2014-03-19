@@ -1,0 +1,7 @@
+(define (split first second)
+  (define (ite painter n)
+    (if (= n 0)
+        painter
+        (let ((small (ite painter (- n 1))))
+          (first painter (second small small)))))
+  ite) ;;;return a procedure that takes 2 parameters 

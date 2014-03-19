@@ -66,3 +66,8 @@
 			b. filter
 			c. map
 			d. accumulate
+		2.2.4 Example: A Picture Language
+			In this language, the data objects being combined are represented as procedures rather than as list structure.
+			Part of the elegance of this picture language is that there is only one kind of element, called a painter.
+			Please read this page(http://planet.racket-lang.org/package-source/soegaard/sicp.plt/2/1/planet-docs/sicp-manual/index.html) for using the picture language in DrRacket, but, it doesn't include the wave and rogers builtin painters, it includes other sample painters, such as: black, white, gray, diagonal-shading and einstein.
+			Stratified design helps make programs robust, that is, it makes it likely that small changes in a specification will require correspondingly small changes in the program.

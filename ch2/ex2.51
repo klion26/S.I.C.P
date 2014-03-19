@@ -1,0 +1,17 @@
+(define (mybelow painter1 painter2)
+  (let ((split-point (make-vect 0.0 0.5)))
+    (let ((paint-upper
+           ((transform-painter split-point
+                               (make-vect 1.0 0.5)
+                               (make-vect 0.0 1.0)) painter1))
+         (paint-lower
+           ((transform-painter (make-vect 0.0 0.0)
+                               (make-vect 1.0 0.0)
+                               split-point) painter2)))
+      (lambda (frame)
+        (paint-upper frame)
+        (paint-lower frame)))))
+        
+ First, rotate the two image 270, then ,beside one by the other, in the final, roate the answer image 90.
+(define (mybelow2 painter1 painter2)
+  (rotate90 (beside (rotate270 painter1) (rotate270 painter2))))        
