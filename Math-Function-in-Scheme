@@ -31,3 +31,4 @@ Other useful maths functions (rounding, modulo, gcd, etc.)
 (abs x) - This returns the absolute value of x.
 (remainder x y) =>Calculates the remainder of dividing y into x (that is, the remainder of x/y):
 (modulo x y) => Calculates the modulo of x and y.
+(quotient x y) => (x - x%y)/y

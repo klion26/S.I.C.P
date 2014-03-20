@@ -1,0 +1,10 @@
+a.
+First, create the left subtree, then create the right subtree, and return the final tree.
+Every time we call (partial-tree elts n)
+1) use (partial-tree elts left-size) [which left-size = (quotient (- n 1) 2)] to generate the left subtee, and the left elements
+2) get the current entry by (car non-left-elts)[non-left-elts is returned by last step]
+3) use (partial-tree (cdr non-left-elts) right-size)) to generate the right subtee, and return the current tree with the left elts.
+(list->tree '(1 3 5 7 9 11))
+=>(5 (1 () (3 () ())) (9 (7 () ()) (11 () ())))
+b.
+O(n); each element will be produced once.

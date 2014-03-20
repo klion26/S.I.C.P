@@ -78,3 +78,8 @@
 			(cdr '(a b c)) ==> (b c)
 			One additional primitive used in manipulating symbols is eq?.
 		2.3.2 Example: Symbolic Differentiation
+		2.3.3 Example: Representing Sets
+			Sets as unordered lists
+			Sets as ordered lists
+			Sets as binary trees
+		2.3.4 Example: Huffman Encoding Trees

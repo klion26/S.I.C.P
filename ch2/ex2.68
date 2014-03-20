@@ -1,0 +1,19 @@
+(define (element-of-set? x tree)  ;;find if x in (symbols tree)
+  (define (iter set)
+  ;(let ((l (symbols tree)))
+    (cond
+      ((null? set) false)
+      ((equal? x (car set)) true)
+      (else (iter (cdr set)))))
+  (iter (symbols tree)))
+      
+(define (encode-symbol sym tree)  ;;encode sym using tree
+  ;(let ((l (symbols tree)))
+    (if (not (element-of-set? sym tree)) ;;sym isn't in tree
+        (error sym "not in the tree")
+        (cond ((leaf? tree)    '()) 
+              (else
+               (let ((left (left-branch tree))
+                    (right (right-branch tree)))
+                    (cond ((element-of-set? sym left) (cons '0 (encode-symbol sym left)) )
+                      (else (cons '1 (encode-symbol sym right)) )))))))

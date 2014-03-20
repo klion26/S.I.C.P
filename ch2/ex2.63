@@ -1,0 +1,7 @@
+a.
+same result. the in-order traversal for every tree.
+results are all the same {1 3 5 7 9 11}
+b.
+because tree->list-1 and tree->list-2 use differen implementations, their run-time may be different, tree->list-1
+uses append, and tree->list-2 uses only cons. so tree->list-1 has an O(nlgn) complexity, and O(n) for tree->list-2.
+see details in http://www.billthelizard.com/2013/03/sicp-263-265-sets-as-binary-trees.html and (http://wiki.drewhess.com/wiki/SICP_exercise_2.63)

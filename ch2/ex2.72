@@ -1,0 +1,2 @@
+for the most frequent symbol, we only need 1*length.
+for the least frequent symbol, we need n*length.
