@@ -75,7 +75,7 @@
 		2.3.1 Quotation
 			Our format for quoting differs from that of natural languages in that we place a quotation mark(traditionally, the single quote symbol ') only at beginning of the object to be quoted.
 			(car '(a b c)) ==> a
-			(cdr '(a b c)) ==> (b c)
+			(cdr '(a b c)) ==> '(b c)
 			One additional primitive used in manipulating symbols is eq?.
 		2.3.2 Example: Symbolic Differentiation
 		2.3.3 Example: Representing Sets
@@ -83,3 +83,10 @@
 			Sets as ordered lists
 			Sets as binary trees
 		2.3.4 Example: Huffman Encoding Trees
+	2.4 Multiple Representations for Abstract Data
+		Data abstraction barriers are powerful tools for controlling complexity.
+		In this section, we will learn how to cope with data that may be represented in different ways by different parts of a program. This requires constructing generic procedures -- procedures that can operate on data that may be represented in more than one way.
+		2.4.1 Representations for Complex Numbers
+		2.4.2 Tagged data
+		2.4.3 Data-Directed Programming and Additivity
+			The general strategy of checking the type of a datum and calling an appropriate procedure is called dispatching on type.
