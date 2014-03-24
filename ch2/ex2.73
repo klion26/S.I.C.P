@@ -1,0 +1,90 @@
+a:
+data-directed procedure, use (get 'deriv (operator exp)) to get the correct procedure worked on 'deriv  and (operator ext),  number and variable are predicates, we don't need to dispatch.
+b:
+(define (attach-tag type-tag x y)
+  (list type-tag x y))
+(define (install-sum-package)
+    ;;internal procedures
+    (define (addend exp)
+       (car exp))
+    (define (augend exp)
+       (cadr exp))
+    (define (make-sum x y)
+       (cond ((=number? x 0)
+               y)
+             ((=number? y 0)
+               x)
+             ((and (number? x) (number? y))
+              (+ x y))
+             (else
+               (attach-tag '+ x y))))
+    ;;interface to the rest of the system
+    (put 'addend '+ addend)
+    (put 'augend '+ augend)
+    (put 'make-sum '+ make-sum)
+
+    (put 'deriv '+ (lambda (exp var) (make-sum (deriv (addend exp) var) (deriv (augend exp) var))))
+'done)
+(define (install-product-package)
+   ;;;internal procedures
+   (define (multiplier p)
+     (car p))
+   (define (multiplicand p)
+     (cadr p))
+   (define (make-product x y)
+     (cond ((or (=number? x 0) (=number? y 0))
+           0)
+           ((=number? x 1) y)
+           ((=number? y 1) x)
+           ((and (number? x) (number? y)) (* x y))
+           (else
+              (attach-tag '* x y))))
+    ;;interface to the rest of the system
+    (put 'multiplier '* multiplier)
+    (put 'multiplicand '* multiplicand)
+    (put 'make-product '* make-product)
+
+    (put 'deriv '* (lambda (exp var) (make-sum
+                                        (make-product (multiplier exp) (deriv (multiplicand exp) var))
+                                        (make-product (multiplier exp) var)
+                                        (multiplicand exp))))
+'done)
+c:
+(define (install-exponentiation-package)
+
+    ;;; internal procedures
+    (define (base exp)
+        (car exp))
+
+    (define (exponent exp)
+        (cadr exp))
+
+    (define (make-exponentiation base n)
+        (cond ((= n 0)
+                0)
+              ((= n 1)
+                base)
+              (else
+                (attach-tag '** base n))))
+
+    ;;; interface to the rest of the system
+    (put 'base '** base)
+    (put 'exponent '** exponent)
+    (put 'make-exponentiation '** make-exponentiation)
+
+    (put 'deriv '**
+         (lambda (exp var)
+            (let ((n (exponent exp))
+                  (u (base exp)))
+                (make-product
+                    n
+                    (make-product
+                        (make-exponentiation
+                            u
+                            (- n 1))
+                        (deriv u var))))))
+
+'done)
+d:
+The only change needed is the installation of the procedures.
+(put '+ 'deriv deriv-sum)
