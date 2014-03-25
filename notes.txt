@@ -90,3 +90,12 @@
 		2.4.2 Tagged data
 		2.4.3 Data-Directed Programming and Additivity
 			The general strategy of checking the type of a datum and calling an appropriate procedure is called dispatching on type.
+	2.5 Systems with Generic Operations
+		2.5.1 Generic Arithmetic Operations
+		2.5.2 Combining Data of Different Types[cross-type operations]
+			coercion
+			Hierarchies of types
+			Inadequacies of hierarchies
+		2.5.3 Example: Symbolic Algebra
+			Arithmetic on polynomials
+			Representing term lists

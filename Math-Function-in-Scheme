@@ -32,3 +32,5 @@ Other useful maths functions (rounding, modulo, gcd, etc.)
 (remainder x y) =>Calculates the remainder of dividing y into x (that is, the remainder of x/y):
 (modulo x y) => Calculates the modulo of x and y.
 (quotient x y) => (x - x%y)/y
+(rationalize x y) returns the simplest rational number differing from x by no more than y
+(inexact->exact x) => returns an exact representation of z.

@@ -1,0 +1,14 @@
+(define (raise x)
+   (apply-generic 'raise x))s
+   
+(put 'raise 'scheme-number
+   (lambda (x) (make-rational x 1)))
+   
+(put 'raise 'rational-number
+   (lambda (x) (make-real (/ (numer x) (denom x)))))
+   
+   
+(put 'raise 'real-number
+   (lambda (x) (make-from-real-imag x 0)))
+   
+   

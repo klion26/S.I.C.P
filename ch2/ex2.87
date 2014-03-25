@@ -1,0 +1,6 @@
+(put '=zero? 'polynomial
+    (define (iter x)
+       (if (empty-termlist? x)
+           true
+           (and (=zero? (coeff (first-term x))) (iter (rest-terms x)))))
+    iter)

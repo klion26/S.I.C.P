@@ -1,0 +1,30 @@
+;;use the idea from the text-book!!!
+ ( define ( apply-generic op . args)
+   (define (try-convert x new-type)
+      (let ((converter (get-coercion (type-tag x) new-type)))
+        (if converter
+            (converter x)
+            x)))
+    (define (apply-generic-1 op args type-list)
+      (if (null? type-list)
+          (error "No method for these types"
+                 (list op (map type-tag args)))
+          (let ((new-args (map (lambda (x)
+                                 (try-convert x (car type-list)))
+                               args)))
+            (let ((new-type-tags (map type-tag new-args)))
+              (let ((proc (get op new-type-tags)))
+                (if proc
+                    (apply proc (map contents new-args))
+                    (apply-generic-1 op args (cdr type-list))))))))
+    (let ((type-tags (map type-tag args)))
+      (let ((proc (get op type-tags)))
+         (if proc
+             (apply proc (map contents args))
+             (apply-generic-1 op args type-tags)))))
+
+another idea: coerce all the arguments to the top type? then low the answer??
+
+reference:
+1. wqzhang.wordpress.com/2009/07/02/sicp-exercise-2-82/
+2. http://jots-jottings.blogspot.com/2012/02/sicp-exercise-282-multi-argument.html

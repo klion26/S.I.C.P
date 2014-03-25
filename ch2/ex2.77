@@ -1,0 +1,2 @@
+complex doesn't have magnitude procedure.
+apply-generic is invoked 2 times. First, change complex to rectangular, second, change rectangular to the real definition.

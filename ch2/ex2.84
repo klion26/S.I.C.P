@@ -1,0 +1,64 @@
+(define (level type)
+   (cond ((eq? type 'integer) 0)
+         ((eq? type 'rational) 1)
+         ((eq? type 'real) 2)
+         ((eq? type 'complex) 3)
+         (else (error "Invalid type: LEVEL" type))))
+         
+(define (apply-generic op . args)
+  (let ((type-tags (map type-tag args)))
+     (define (no-method)
+        (error "No method for these types" (list op type-tags)))
+     (let ((proc (get op type-tags)))
+        (if proc
+           (apply proc (map contents args))
+           (if (not (null? (cdr args))) ;;length of args > 1
+               (let ((raised-args (raise-to-common args)))
+                    (if raised-args
+                       (let ((proc (get op (map type-tag raised-args))))
+                         (if proc
+                             (apply proc (map contents raised-args))
+                             (no-method)))
+                       (no-method)))
+                (no-method))))))
+                
+(define (raise-to-common args)
+   (let ((raised-args
+             (map (lambda (x) (raise-to-type (highest-type-args) x))
+               args)))
+       (if (all-true? raised-args)
+           raised-args
+           false)))
+           
+(define (all-true? lst)
+    (cond ((null? lst) true)
+          ((car lst) (all-true? (cdr lst)))
+          (else false)))
+          
+(define (raise-to-type type item)
+    (let ((item-type (type-tag item)))
+       (if (eq? item-type type)
+           item
+           (let ((raise-fn (get 'raise item-type)))
+                (if raise-fn
+                    (raise-to-type type (raise-fn item))
+                    false)))))
+                    
+(define (highest-type args)
+   (if (null? (cdr args))
+       (type-tag (car args))
+       (let ((t1 (type-tag (car args)))
+             (t2 (highest-type (cdr args))))
+            (let ((l1 (level t1)) (l2 (level t2)))
+                 (if (> l1 l2)
+                     t1
+                     t2)))))
+                     
+                     
+Another idea:
+suppose all types are in the same tower.
+1. write a procedure (higher? a b) to test if a can raise to b or not.
+   if a can raise to b, a is higher than b, else b is higher than a
+2. write a procedure (high a list) to test if a is higher than all the items in list
+3. write a procedure (find-highest list) to find the highest level item in list
+4. change all the items in the list to the highest level.

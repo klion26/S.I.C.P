@@ -1,0 +1,28 @@
+(define (negate x) (apply-generic 'negate x))
+;;add into scheme-number package
+(put 'negate 'scheme-number
+   (lambda (x) (tag (- x))))
+   
+;;add into rational package   
+(put 'negate 'rational
+   (lambda (x) (make-rational (- (numer x)) (denom x))))
+   
+;;add into complex package   
+(put 'negate 'complex
+   (lambda (x) (make-from-real-imag (- (real-part x))
+                                    (- (imag-part x)))))
+                          
+;;add into polynomial package                          
+(define (negate-terms termslist)
+   (if (empty-termslist? termslist)
+       (the-empty-termlist)
+       (let ((t (first-term termslist)))
+           (adjoin-term (make-term (order t) (negate (coeff t)))
+                        (negate-terms (rest-terms termlist))))))
+                        
+(put 'neaget 'polynomial
+  (lambda (x)  (make-polynomial (variable x)
+                                (negate-terms (term-list x)))))
+                                
+(put 'sub 'polynomial
+   (lambda (x y) (tag (add-poly x (negate y)))))

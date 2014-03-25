@@ -1,0 +1,14 @@
+(define (=zero? x)
+  (apply-generic '=szero? x))
+ 
+scheme-number
+(put '=zero? '(scheme-number)
+   (lambda (x) (= x 0)))
+   
+ration-number
+(put '=zero? '(ration-number)
+  (lambda (x) (= 0 (numer x))))
+  
+complex-number
+(put '=zero? '(complex-number)
+  (lambda (x) (and (= 0 (real-part x)) (= 0 (imag-part x)))))
