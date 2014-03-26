@@ -99,3 +99,4 @@
 		2.5.3 Example: Symbolic Algebra
 			Arithmetic on polynomials
 			Representing term lists
+			Hierarchies of types in symbolic algebra

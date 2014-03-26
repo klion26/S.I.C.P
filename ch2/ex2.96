@@ -1,0 +1,20 @@
+a.
+;;do as the instrument in ex2.95
+(define (pseudoremainder-terms a b)
+  (let* ((O1 (order (first-term a)))
+         (O2 (order (first-term b)))
+         (factor (expt (coeff (first-term b)) (+ 1 O1 (- O2)))))
+        (let ((new-a (mul-term-by-all-terms
+                          (make-term 0 factor) a)))
+            (cadr (div-terms new-a b)))))
+            
+b.
+(define (gcd-terms a b)
+  (if (empty-termlist? a)
+      (let* ((L (term-list a))
+             (c-list (map (lambda (term) (coeff term)) L))
+             (gcd-c-list (apply gcd c-list)))
+         (map (lambda (term) (make-term (order term)
+                                        (/ (coeff term) (gcd-c-list))))
+              a))
+      (gcd-terms b (pseudoremainder-terms a b))))
